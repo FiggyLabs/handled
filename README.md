@@ -12,8 +12,8 @@ Decisions get made. Owners get named. Then nothing is tracked and nobody follows
 
 ```bash
 # Log commitments as they're made
-python3 handled.py add "Tom: migrate staging to Railway by Thursday" --due 2024-04-04
-python3 handled.py add "Priya: VAT compliance research" --due 2024-04-07
+python3 handled.py add "Tom: migrate staging to Railway by Thursday" --due 2026-04-04
+python3 handled.py add "Priya: VAT compliance research" --due 2026-04-07
 python3 handled.py add "Maya: confirm go-live date with stakeholders"
 
 # See everything open
@@ -28,15 +28,15 @@ python3 handled.py overdue
 ```
   2 overdue commitments
 
-  [2024-03-27 09:14]  #a1b2c3d4  🔴
+  [2026-03-27 09:14]  #a1b2c3d4  🔴
   Commitment: Tom: migrate staging to Railway by Thursday
   Owner:      tom
-  Due:        2024-04-04  ← 2 days overdue
+  Due:        2026-04-04  ← 2 days overdue
 
-  [2024-03-27 11:30]  #e5f6a7b8  🔴
+  [2026-03-27 11:30]  #e5f6a7b8  🔴
   Commitment: Priya: VAT compliance research
   Owner:      priya
-  Due:        2024-04-07  ← 1 day overdue
+  Due:        2026-04-07  ← 1 day overdue
 ```
 
 ```bash
@@ -64,10 +64,10 @@ Python 3.8+. No dependencies. Nothing to install.
 
 ```bash
 # Add a commitment (owner auto-parsed from "Name: task" format)
-python3 handled.py add "Tom: migrate staging by Thursday" --due 2024-04-04
+python3 handled.py add "Tom: migrate staging by Thursday" --due 2026-04-04
 
 # Add with explicit owner
-python3 handled.py add "Update the infra docs" --owner charlie --due 2024-04-01
+python3 handled.py add "Update the infra docs" --owner charlie --due 2026-04-01
 
 # List all open commitments
 python3 handled.py list
@@ -96,7 +96,7 @@ python3 settled.py --file thread.txt
 python3 stamped.py add "Stripe approved for billing. Owner: Tom."
 
 # Handled tracks the follow-through
-python3 handled.py add "Tom: migrate staging by Thursday" --due 2024-04-04
+python3 handled.py add "Tom: migrate staging by Thursday" --due 2026-04-04
 python3 handled.py add "Priya: add Stripe keys to secrets manager"
 
 # Check in on Friday
@@ -116,6 +116,27 @@ Override the path:
 ```bash
 HANDLED_LOG=./team.json python3 handled.py list
 ```
+
+---
+
+## Roadmap
+
+**v1 — current**
+- `add`, `list`, `done`, `overdue`, `find`
+- Auto-parses owner from `"Name: task"` format
+- Overdue detection by due date or stale age (7+ days)
+- Local JSON storage, env override
+
+**v1.1**
+- `cancel` command
+- `edit` — update due date or text in place
+- `summary` — X open, Y overdue, Z done this week
+- Color output (red/green) via ANSI, no deps added
+
+**v2**
+- Web UI (`handled --web`) — same pattern as Settled
+- Import from Settled JSON output
+- Weekly digest Markdown export
 
 ---
 
